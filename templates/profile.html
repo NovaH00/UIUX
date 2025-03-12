@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Minimal Profile</title>
+    <link rel="stylesheet" href="../static/profile.css" />
+</head>
+
+<body>
+    <a href="../templates/home.html" class="back-button">&larr; Quay Lại</a>
+
+    <div class="cards-container">
+        <!-- Left Card -->
+        <div class="card card-left">
+            <img src="https://placehold.co/150" alt="Profile Picture" class="profile-pic" />
+            <h1>Tên</h1>
+        </div>
+
+        <!-- Danh Hiệu Card -->
+        <div class="card card-right with-title">
+            <div class="card-title">
+                <span class="shimmer-text">Danh Hiệu</span>
+            </div>
+        </div>
+
+        <!-- Bottom Card -->
+        <div class="card card-bottom with-title">
+            <div class="card-title">
+                <span class="shimmer-text">Mô tả về bản thân</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Existing interactive light effect (unchanged)
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const percentX = (x / rect.width) * 100;
+                const percentY = (y / rect.height) * 100;
+                card.style.setProperty('--mouse-x', percentX + '%');
+                card.style.setProperty('--mouse-y', percentY + '%');
+                card.style.setProperty('--light-opacity', '1');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.setProperty('--light-opacity', '0');
+            });
+        });
+    </script>
+</body>
+
+</html>
