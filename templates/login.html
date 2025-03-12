@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../static/login.css">
+
+</head>
+
+<body>
+    <div class="page-title">Đăng Nhập</div>
+    <div class="login-form">
+        <div class="form">
+            <div class="username">Tên đăng nhập</div>
+            <div class="username-form">
+                <input type="text">
+            </div>
+            <div class="password">Mật khẩu</div>
+            <div class="password-form">
+                <input type="password">
+            </div>
+            <div class="login-btn">
+                <button type="button" onclick="redirectWithDelay('../templates/home.html', 300)">Đăng Nhập</button>
+            </div>
+            <div class="divide-line"></div>
+            <div class="forgot-password">
+                <a class="forgot-password-link" href="../templates/forgot_password.html">Quên mật khẩu?</a>
+            </div>
+            <div class="register">
+                <a class="register-link" href="../templates/register.html">Chưa có tài khoản?</a>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script src="../scripts/login.js"></script>
+</body>
+
+</html>

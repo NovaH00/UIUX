@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../static/register.css">
+    <script>
+        function changeDirectory(directory) {
+            window.location.href = directory; // Change to your desired URL or path
+        }
+    </script>
+</head>
+
+<body>
+    <a href="#" class="back-button" onclick="changeDirectory('../templates/login.html')">Quay lại</a>
+    <div class="container">
+        <h1>Tạo Tài Khoản</h1>
+        <form>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Tên đăng nhập</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Xác nhận mật khẩu</label>
+                <input type="password" id="confirm-password" required>
+            </div>
+            <button type="submit">Đăng Ký</button>
+        </form>
+    </div>
+</body>
+
+</html>

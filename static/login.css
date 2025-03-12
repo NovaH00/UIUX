@@ -1,0 +1,336 @@
+body {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    /* Ensure positioning context for child elements */
+    background-color: rgb(240, 240, 240);
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.page-title {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+    font-size: 30px;
+    /* Adjust the margin as needed */
+}
+
+.login-form {
+    display: flex;
+    height: clamp(300px, 60vh, 500px);
+    width: clamp(300px, 60vw, 750px);
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form .form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    background-color: rgb(240, 240, 240);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.login-form .form:hover {
+    box-shadow: 5px 5px 5px black;
+    transform: translate(-2px, -2px);
+    background-color: white;
+}
+
+@keyframes changeToBlack {
+    0% {
+        color: white;
+        background-color: white;
+    }
+
+    100% {
+        color: black;
+        background-color: black;
+    }
+}
+
+@keyframes changeTextColorToBlack {
+    0% {
+        color: white;
+    }
+
+    100% {
+        color: black;
+    }
+}
+
+
+
+.login-form .form:hover .forgot-password .forgot-password-link {
+    animation: changeTextColorToBlack 0.3s ease-in-out 0.3s forwards;
+}
+
+.login-form .form:hover .register .register-link {
+    animation: changeTextColorToBlack 0.3s ease-in-out 0.6s forwards;
+}
+
+
+
+.login-form .form .email {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 80%;
+    height: 10%;
+    margin-top: 20px;
+    color: black;
+}
+
+.login-form .form .email-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 10%;
+    margin-bottom: 10px;
+}
+
+.login-form .form .username {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 80%;
+    height: 10%;
+    margin-top: 30px;
+    color: black;
+}
+
+.login-form .form .username-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 10%;
+    margin-bottom: 10px;
+}
+
+.login-form .form .password {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 80%;
+    height: 10%;
+    margin-top: 10px;
+    color: black;
+}
+
+.login-form .form .password-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 10%;
+    margin-bottom: 10px;
+}
+
+.login-form .form .username-form input,
+.login-form .form .password-form input,
+.login-form .form .email-form input {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    /* Set a base border to transition */
+    box-sizing: border-box;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+
+    transition:
+        border-color 0.3s ease-in-out,
+        border-width 0.3s ease-in-out,
+        box-shadow 0.3s ease-in-out;
+}
+
+.login-form:hover .form .username-form input,
+.login-form:hover .form .password-form input,
+.login-form:hover .form .email-form input {
+    border-color: black;
+    border-width: 1px;
+    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+.login-form .form .login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 10%;
+    margin: 10px;
+}
+
+.login-form .form .login-btn button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Hover effect - button rises */
+.login-form .form .login-btn button:hover {
+    box-shadow: -1px -1px 3px rgba(255, 255, 255, 0.8), 5px 5px 8px rgba(0, 0, 0, 0.3);
+    transform: translate(-1px, -1px);
+}
+
+.login-form .form .login-btn button:active {
+    box-shadow: none;
+    transform: translate(1px, 1px);
+    transition: transform 0.3s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+
+
+
+/* Divide Line */
+.login-form .form .divide-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 0.5px;
+    background-color: rgb(240, 240, 240);
+    margin: 20px;
+    transition: background-color 0.3s ease-in-out;
+
+}
+
+.login-form:hover .form .divide-line {
+    background-color: black;
+}
+
+/* Forgot Password */
+.login-form .form .forgot-password {
+    display: flex;
+    width: 80%;
+    height: auto;
+    margin-top: 5px;
+}
+
+.login-form .form .forgot-password .forgot-password-link {
+    color: rgb(240, 240, 240);
+    text-decoration: none;
+}
+
+.login-form .form .forgot-password .forgot-password-link:hover {
+    color: rgb(0, 77, 177) !important;
+}
+
+/* Register */
+.login-form .form .register {
+    display: flex;
+    width: 80%;
+    height: auto;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.login-form .form .register .register-link {
+    color: rgb(240, 240, 240);
+    text-decoration: none;
+}
+
+.login-form .form .register .register-link:hover {
+    color: rgb(0, 77, 177) !important;
+
+}
+
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: moveParticle 1s ease-out forwards, fadeOut 1s ease-out forwards;
+}
+
+@keyframes moveParticle {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(calc(-10px + 20px * random()), calc(-10px + 20px * random()));
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Container that follows the cursor */
+.cursor-orbit {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+/* Each orbiting particle */
+.orbit-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: black;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+}
+
+/* Trail clone styling */
+.orbit-trail {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    animation: fadeTrail 0.5s forwards;
+}
+
+@keyframes fadeTrail {
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
