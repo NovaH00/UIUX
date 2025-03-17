@@ -1,14 +1,22 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
+    /* Updated font */
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    /* Updated background */
+    color: white;
+    /* Updated text color */
 }
 
 .header {
-    background: #fce4e4;
+    background: rgba(255, 255, 255, 0.1);
+    /* Updated background */
     padding: 10px;
     display: flex;
     justify-content: right;
     align-items: center;
+    backdrop-filter: blur(10px);
+    /* Glassmorphism effect */
 }
 
 .icon {
@@ -23,9 +31,8 @@ body {
     border: none;
     padding: 5px 15px;
     cursor: pointer;
-
     transition: background 0.1s ease-in-out;
-    margin-left: 20px
+    margin-left: 20px;
 }
 
 .logout-button:hover {
@@ -41,28 +48,35 @@ body {
     height: auto;
     width: auto;
     text-decoration: none;
-    color: black;
+    color: white;
+    /* Updated color */
 }
 
 .profile:hover {
     color: rgb(0, 77, 177);
-    /* cursor: pointer; */
 }
-
 
 .container {
     display: flex;
+    flex-direction: column;
+    /* Updated to column for better responsiveness */
     padding: 20px;
-    background: #f0f0f0;
+    background: rgba(255, 255, 255, 0.1);
+    /* Updated background */
     height: 80vh;
+    backdrop-filter: blur(10px);
+    /* Glassmorphism effect */
 }
 
 .schedule,
 .news {
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
+    /* Updated background */
     padding: 20px;
     display: flex;
     flex-direction: column;
+    backdrop-filter: blur(10px);
+    /* Glassmorphism effect */
 }
 
 .schedule {

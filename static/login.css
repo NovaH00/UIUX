@@ -1,6 +1,17 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 body {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    /* Updated font */
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -8,10 +19,14 @@ body {
     height: 100vh;
     width: 100vw;
     position: relative;
-    /* Ensure positioning context for child elements */
-    background-color: rgb(240, 240, 240);
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    /* Updated background */
     box-sizing: border-box;
     user-select: none;
+    overflow: hidden;
+    /* Prevent scrollbars */
+    animation: fadeIn 1s ease-in-out;
+    /* Added fade-in animation */
 }
 
 .page-title {
@@ -21,7 +36,8 @@ body {
     transform: translateX(-50%);
     margin-top: 20px;
     font-size: 30px;
-    /* Adjust the margin as needed */
+    color: white;
+    /* Updated color */
 }
 
 .login-form {
@@ -41,14 +57,19 @@ body {
     justify-content: flex-start;
     align-items: center;
     border-radius: 10px;
-    background-color: rgb(240, 240, 240);
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Updated background */
+    backdrop-filter: blur(10px);
+    /* Glassmorphism effect */
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .login-form .form:hover {
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    /* Updated shadow */
     transform: translate(-2px, -2px);
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Updated background */
 }
 
 @keyframes changeToBlack {
