@@ -6,37 +6,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../static/global.css">
     <link rel="stylesheet" href="../static/profile.css" />
 </head>
 
 <body>
+    <div class="spinner"></div>
+
     <a href="../templates/home.html" class="back-button">&larr; Quay Lại</a>
 
-    <div class="cards-container">
-        <!-- Left Card -->
-        <div class="card card-left">
-            <img src="https://placehold.co/150" alt="Profile Picture" class="profile-pic" />
-            <h1>Tên</h1>
-        </div>
+    <!-- Updated dark-mode-toggle to match other pages -->
+    <div class="dark-mode-toggle">
+        <label class="text-label" for="darkModeToggle">Dark Mode</label>
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
 
-        <!-- Danh Hiệu Card -->
-        <div class="card card-right with-title">
-            <div class="card-title">
-                <span class="shimmer-text">Danh Hiệu</span>
+    <div class="cards-container" data-animate="fadeIn">
+        <!-- Left Card (Profile Info) -->
+        <div class="card profile-card">
+            <div class="profile-header">
+                <div class="cover-photo"></div>
+                <div class="profile-pic-container">
+                    <div class="placeholder-avatar">
+                        <span>NV</span>
+                    </div>
+                    <div class="profile-pic-edit">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-info">
+                <h1 class="profile-name" id="profileName" onclick="toggleNameEdit()">Nguyễn Văn Nam</h1>
+                <input type="text" class="profile-name-input" id="profileNameInput" value="Nguyễn Văn Nam"
+                    onblur="saveName()" onkeydown="handleNameKeydown(event)">
+                <p class="profile-subtitle">Sinh viên năm 3 | MSSV: 21520123</p>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-value">3.8</span>
+                        <span class="stat-label">GPA</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">8</span>
+                        <span class="stat-label">Học kỳ</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">Thành tích</span>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn btn-primary"><i class="fas fa-edit"></i> Chỉnh sửa</button>
+                    <button class="btn btn-secondary"><i class="fas fa-cog"></i> Cài đặt</button>
+                </div>
             </div>
         </div>
 
-        <!-- Bottom Card -->
-        <div class="card card-bottom with-title">
+        <!-- Right Card (Achievements) -->
+        <div class="card achievements-card with-title">
+            <div class="card-title">
+                <span class="shimmer-text">Danh Hiệu</span>
+            </div>
+            <div class="achievements">
+                <div class="achievement">
+                    <div class="achievement-icon gold">🏆</div>
+                    <div class="achievement-content">
+                        <h3>Học sinh xuất sắc</h3>
+                        <p>Học kỳ Xuân 2023</p>
+                    </div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-icon silver">🌟</div>
+                    <div class="achievement-content">
+                        <h3>5 năm liên tiếp đạt danh hiệu</h3>
+                        <p>2018 - 2023</p>
+                    </div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-icon bronze">🎓</div>
+                    <div class="achievement-content">
+                        <h3>Thủ khoa đầu vào</h3>
+                        <p>Khoa Công nghệ Thông tin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Card (Bio) -->
+        <div class="card bio-card with-title">
             <div class="card-title">
                 <span class="shimmer-text">Mô tả về bản thân</span>
+            </div>
+            <div class="bio-content">
+                <p>Tôi là sinh viên năm 3 ngành Công nghệ Thông tin, chuyên ngành Trí tuệ nhân tạo. Với niềm đam mê về
+                    công nghệ và lập trình, tôi luôn nỗ lực học hỏi và phát triển bản thân mỗi ngày.</p>
+                <p>Sở thích: Đọc sách, chơi cờ vua, và phát triển các ứng dụng web.</p>
+                <div class="skills">
+                    <h3>Kỹ năng</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Data Structures</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <script src="../scripts/global.js"></script>
     <script>
-        // Existing interactive light effect (unchanged)
+        // Interactive light effect
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
@@ -52,6 +137,74 @@
             card.addEventListener('mouseleave', () => {
                 card.style.setProperty('--light-opacity', '0');
             });
+        });
+
+        // Profile picture hover effect
+        const profilePicContainer = document.querySelector('.profile-pic-container');
+        if (profilePicContainer) {
+            profilePicContainer.addEventListener('mouseenter', () => {
+                profilePicContainer.classList.add('hovered');
+            });
+            profilePicContainer.addEventListener('mouseleave', () => {
+                profilePicContainer.classList.remove('hovered');
+            });
+        }
+
+        // Profile name editing functionality
+        function toggleNameEdit() {
+            const nameElem = document.getElementById('profileName');
+            const inputElem = document.getElementById('profileNameInput');
+
+            nameElem.style.display = 'none';
+            inputElem.style.display = 'block';
+            inputElem.focus();
+            inputElem.select();
+        }
+
+        function saveName() {
+            const nameElem = document.getElementById('profileName');
+            const inputElem = document.getElementById('profileNameInput');
+            const newName = inputElem.value.trim();
+
+            if (newName) {
+                nameElem.textContent = newName;
+            }
+
+            nameElem.style.display = 'block';
+            inputElem.style.display = 'none';
+
+            // For a real application, here you would save the name to the server
+            console.log('Name updated to:', newName);
+        }
+
+        function handleNameKeydown(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                saveName();
+            } else if (event.key === 'Escape') {
+                event.preventDefault();
+                const nameElem = document.getElementById('profileName');
+                const inputElem = document.getElementById('profileNameInput');
+
+                inputElem.value = nameElem.textContent; // Reset to original
+                nameElem.style.display = 'block';
+                inputElem.style.display = 'none';
+            }
+        }
+
+        // Initialize cards with RGB variables for effects
+        document.querySelectorAll('.card').forEach(card => {
+            // Extract RGB values from primary color for effects
+            const style = getComputedStyle(document.body);
+            const primaryColor = style.getPropertyValue('--primary-color') || '#6a11cb';
+
+            // Convert hex to RGB
+            const hex = primaryColor.trim();
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+
+            card.style.setProperty('--primary-color-rgb', `${r}, ${g}, ${b}`);
         });
     </script>
 </body>

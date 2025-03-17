@@ -6,16 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Ký</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/global.css">
     <link rel="stylesheet" href="../static/register.css">
-    <script>
-        function changeDirectory(directory) {
-            window.location.href = directory; // Change to your desired URL or path
-        }
-    </script>
 </head>
 
 <body>
-    <a href="#" class="back-button" onclick="changeDirectory('../templates/login.html')">Quay lại</a>
+    <div class="spinner"></div>
+
+    <a href="../templates/login.html" class="back-button">Quay lại</a>
+
+    <div class="dark-mode-toggle">
+        <label class="text-label" for="darkModeToggle">Dark Mode</label>
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+
     <div class="container">
         <h1>Tạo Tài Khoản</h1>
         <form>
@@ -38,6 +45,8 @@
             <button type="submit">Đăng Ký</button>
         </form>
     </div>
+
+    <script src="../scripts/global.js"></script>
 </body>
 
 </html>
